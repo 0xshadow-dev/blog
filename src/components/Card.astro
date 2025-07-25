@@ -3,6 +3,7 @@ import { slugifyStr } from "@/utils/slugify";
 import type { CollectionEntry } from "astro:content";
 import { getPath } from "@/utils/getPath";
 import Datetime from "./Datetime.astro";
+import Series from "./Series.astro";
 
 export interface Props extends CollectionEntry<"blog"> {
   variant?: "h2" | "h3";
@@ -10,7 +11,15 @@ export interface Props extends CollectionEntry<"blog"> {
 
 const { variant = "h2", data, id, filePath } = Astro.props;
 
-const { title, description, pubDatetime, modDatetime, timezone } = data;
+const {
+  title,
+  description,
+  pubDatetime,
+  modDatetime,
+  timezone,
+  series,
+  seriesOrder,
+} = data;
 
 const headerProps = {
   style: { viewTransitionName: slugifyStr(title) },
@@ -31,6 +40,23 @@ const headerProps = {
       )
     }
   </a>
-  <Datetime {pubDatetime} {modDatetime} {timezone} />
+  <div class="mb-1 flex items-center gap-2">
+    <Datetime {pubDatetime} {modDatetime} {timezone} />
+    {
+      series && (
+        <>
+          <span class="text-accent/50">•</span>
+          <ul class="inline-flex">
+            <Series series={slugifyStr(series)} seriesName={series} size="sm" />
+          </ul>
+          {seriesOrder && (
+            <span class="text-xs font-medium text-accent/75">
+              (Part {seriesOrder})
+            </span>
+          )}
+        </>
+      )
+    }
+  </div>
   <p>{description}</p>
 </li>

@@ -9,8 +9,10 @@ import EditPost from "@/components/EditPost.astro";
 import ShareLinks from "@/components/ShareLinks.astro";
 import BackButton from "@/components/BackButton.astro";
 import BackToTopButton from "@/components/BackToTopButton.astro";
+import SeriesNavigation from "@/components/SeriesNavigation.astro";
 import { getPath } from "@/utils/getPath";
 import { slugifyStr } from "@/utils/slugify";
+import getSeriesNavigation from "@/utils/getSeriesNavigation";
 import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
 import IconChevronRight from "@/assets/icons/IconChevronRight.svg";
 import { SITE } from "@/config";
@@ -80,6 +82,9 @@ const currentPostIndex = allPosts.findIndex(a => a.id === post.id);
 const prevPost = currentPostIndex !== 0 ? allPosts[currentPostIndex - 1] : null;
 const nextPost =
   currentPostIndex !== allPosts.length ? allPosts[currentPostIndex + 1] : null;
+
+/* ========== Series Navigation ========== */
+const seriesNav = getSeriesNavigation(posts, post);
 ---
 
 <Layout {...layoutProps}>
@@ -116,6 +121,9 @@ const nextPost =
     >
       <Content />
     </article>
+
+    <!-- Series Navigation (if post is part of a series) -->
+    {seriesNav && <SeriesNavigation {seriesNav} />}
 
     <hr class="my-8 border-dashed" />
 

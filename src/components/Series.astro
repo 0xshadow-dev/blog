@@ -1,0 +1,46 @@
+---
+import IconHash from "@/assets/icons/IconHash.svg";
+
+export interface Props {
+  series: string;
+  seriesName: string;
+  size?: "sm" | "lg";
+  showCount?: boolean;
+  count?: number;
+}
+
+const {
+  series,
+  seriesName,
+  size = "sm",
+  showCount = false,
+  count,
+} = Astro.props;
+---
+
+<li
+  class:list={[
+    "group inline-block group-hover:cursor-pointer",
+    size === "sm" ? "my-1 underline-offset-4" : "mx-1 my-3 underline-offset-8",
+  ]}
+>
+  <a
+    href={`/series/${series}/`}
+    transition:name={series}
+    class:list={[
+      "relative pe-2 text-lg underline decoration-dashed group-hover:-top-0.5 group-hover:text-accent focus-visible:p-1 focus-visible:no-underline",
+      { "text-sm": size === "sm" },
+    ]}
+  >
+    <IconHash
+      class:list={[
+        "inline-block opacity-80",
+        { "-me-3.5 size-4": size === "sm" },
+        { "-me-5 size-6": size === "lg" },
+      ]}
+    />
+    &nbsp;<span>{seriesName}</span>
+    {showCount && count && <span class="text-xs opacity-75">({count})</span>}
+  </a>
+</li>
+

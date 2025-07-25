@@ -1,0 +1,101 @@
+---
+import type { SeriesNavigation } from "@/utils/getSeriesNavigation";
+import { getPath } from "@/utils/getPath";
+import { slugifyStr } from "@/utils/slugify";
+import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
+import IconChevronRight from "@/assets/icons/IconChevronRight.svg";
+import Series from "./Series.astro";
+
+export interface Props {
+  seriesNav: SeriesNavigation;
+}
+
+const { seriesNav } = Astro.props;
+const { prevPost, nextPost, currentIndex, totalPosts, seriesName } = seriesNav;
+const seriesSlug = slugifyStr(seriesName);
+---
+
+<div
+  class="series-navigation my-6 rounded-lg border border-accent/20 bg-accent/5 p-4"
+>
+  <!-- Series Header -->
+  <div class="mb-3 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <h3 class="text-lg font-semibold text-accent">Series:</h3>
+      <ul class="inline-flex">
+        <Series series={seriesSlug} seriesName={seriesName} size="sm" />
+      </ul>
+    </div>
+    <span class="text-sm font-medium text-accent/75">
+      Part {currentIndex} of {totalPosts}
+    </span>
+  </div>
+
+  <!-- Series Description -->
+  <p class="mb-4 text-sm text-accent/85">
+    This post is part of the "{seriesName}" series.
+    <a
+      href={`/series/${seriesSlug}/`}
+      class="underline decoration-dashed hover:text-accent"
+    >
+      View all posts in this series
+    </a>
+  </p>
+
+  <!-- Navigation Buttons -->
+  <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+    {
+      prevPost && (
+        <a
+          href={getPath(prevPost.id, prevPost.filePath)}
+          class="flex items-center gap-2 rounded border border-accent/20 p-3 transition-colors hover:border-accent/40 hover:bg-accent/5"
+        >
+          <IconChevronLeft class="flex-none text-accent rtl:rotate-180" />
+          <div class="min-w-0">
+            <div class="text-xs font-medium tracking-wide text-accent/75 uppercase">
+              Previous in Series
+            </div>
+            <div class="truncate text-sm font-medium text-accent">
+              {prevPost.data.title}
+            </div>
+          </div>
+        </a>
+      )
+    }
+
+    {
+      nextPost && (
+        <a
+          href={getPath(nextPost.id, nextPost.filePath)}
+          class:list={[
+            "flex items-center gap-2 rounded border border-accent/20 p-3 transition-colors hover:border-accent/40 hover:bg-accent/5",
+            { "sm:col-start-2": prevPost },
+            { "justify-end text-right": prevPost },
+          ]}
+        >
+          {prevPost && (
+            <div class="min-w-0">
+              <div class="text-xs font-medium tracking-wide text-accent/75 uppercase">
+                Next in Series
+              </div>
+              <div class="truncate text-sm font-medium text-accent">
+                {nextPost.data.title}
+              </div>
+            </div>
+          )}
+          {!prevPost && (
+            <div class="min-w-0">
+              <div class="text-xs font-medium tracking-wide text-accent/75 uppercase">
+                Next in Series
+              </div>
+              <div class="truncate text-sm font-medium text-accent">
+                {nextPost.data.title}
+              </div>
+            </div>
+          )}
+          <IconChevronRight class="flex-none text-accent rtl:rotate-180" />
+        </a>
+      )
+    }
+  </div>
+</div>

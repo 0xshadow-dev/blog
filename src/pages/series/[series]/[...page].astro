@@ -1,0 +1,59 @@
+---
+import { getCollection } from "astro:content";
+import type { GetStaticPathsOptions } from "astro";
+import Main from "@/layouts/Main.astro";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Card from "@/components/Card.astro";
+import Pagination from "@/components/Pagination.astro";
+import getUniqueSeries from "@/utils/getUniqueSeries";
+import getPostsBySeries from "@/utils/getPostsBySeries";
+import { SITE } from "@/config";
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const posts = await getCollection("blog");
+  const series = getUniqueSeries(posts);
+
+  return series.flatMap(({ series, seriesName }) => {
+    const seriesPosts = getPostsBySeries(posts, series);
+
+    return paginate(seriesPosts, {
+      params: { series },
+      props: { seriesName },
+      pageSize: SITE.postPerPage,
+    });
+  });
+}
+
+const params = Astro.params;
+const { series } = params;
+const { page, seriesName } = Astro.props;
+---
+
+<Layout title={`Series: ${seriesName} | ${SITE.title}`}>
+  <Header />
+  <Main
+    pageTitle={[`Series:`, `${seriesName}`]}
+    titleTransition={series}
+    pageDesc={`All posts in the "${seriesName}" series, ordered by sequence.`}
+  >
+    <h1 slot="title" transition:name={series}>{`Series: ${seriesName}`}</h1>
+
+    <div class="mb-6 rounded-lg border border-accent/20 bg-accent/5 p-4">
+      <p class="text-sm text-accent/85">
+        This series contains <strong>{page.total}</strong> posts. Posts are displayed
+        in the intended reading order.
+      </p>
+    </div>
+
+    <ul>
+      {page.data.map(data => <Card {...data} />)}
+    </ul>
+  </Main>
+
+  <Pagination {page} />
+
+  <Footer noMarginTop={page.lastPage > 1} />
+</Layout>
+

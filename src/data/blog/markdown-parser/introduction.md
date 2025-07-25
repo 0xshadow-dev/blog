@@ -11,7 +11,7 @@
 #
 title: "Building Markdown Parser Using Rust - Introduction"
 description: "Introduction to rust, setup and Prerequisites for the project."
-pubDatetime: 2025-07-23T09:00:00Z
+pubDatetime: 2025-07-25T09:00:00Z
 tags: ["rust", "parser", "markdown"]
 series: "Building Markdown Parser using Rust"
 seriesOrder: 1

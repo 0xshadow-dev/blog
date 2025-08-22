@@ -3,7 +3,7 @@ import { generateOgImageForSite } from "@/utils/generateOgImages";
 
 export const GET: APIRoute = async () => {
   const buffer = await generateOgImageForSite();
-  return new Response(buffer, {
+  return new Response(buffer as Uint8Array, {
     headers: { "Content-Type": "image/png" },
   });
 };

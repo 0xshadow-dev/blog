@@ -1,9 +1,7 @@
 import type { APIRoute } from "astro";
 import { generateOgImageForSite } from "@/utils/generateOgImages";
 
-export const GET: APIRoute = async () => {
-  const buffer = await generateOgImageForSite();
-  return new Response(buffer as Uint8Array, {
+export const GET: APIRoute = async () =>
+  new Response(await generateOgImageForSite(), {
     headers: { "Content-Type": "image/png" },
   });
-};

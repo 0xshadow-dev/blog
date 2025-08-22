@@ -10,6 +10,7 @@ import ShareLinks from "@/components/ShareLinks.astro";
 import BackButton from "@/components/BackButton.astro";
 import BackToTopButton from "@/components/BackToTopButton.astro";
 import SeriesNavigation from "@/components/SeriesNavigation.astro";
+import Newsletter from "@/components/Newsletter.astro";
 import { getPath } from "@/utils/getPath";
 import { slugifyStr } from "@/utils/slugify";
 import getSeriesNavigation from "@/utils/getSeriesNavigation";
@@ -129,6 +130,14 @@ const seriesNav = getSeriesNavigation(posts, post);
 
     <EditPost class="sm:hidden" {hideEditPost} {post} />
 
+    <!-- Newsletter Subscription -->
+    <section id="newsletter" class="my-8">
+      <h3 class="text-xl font-semibold tracking-wide mb-6">Subscribe to Newsletter</h3>
+      <div class="flex justify-center">
+        <Newsletter />
+      </div>
+    </section>
+
     <ul class="mt-4 mb-8 sm:my-8">
       {tags.map(tag => <Tag tag={slugifyStr(tag)} tagName={tag} />)}
     </ul>
@@ -170,6 +179,7 @@ const seriesNav = getSeriesNavigation(posts, post);
         )
       }
     </div>
+
   </main>
   <Footer />
 </Layout>

@@ -1,0 +1,19 @@
+---
+export interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<div class={`newsletter-subscription ${className}`}>
+  <script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
+  <iframe
+    src="https://subscribe-forms.beehiiv.com/a86cbfea-44a5-4eb9-92f1-d5f2f65deea9"
+    class="beehiiv-embed"
+    data-test-id="beehiiv-embed"
+    frameborder="0"
+    scrolling="no"
+    style="width: 670px; height: 425px; margin: 0; border-radius: 0px 0px 0px 0px !important; background-color: transparent; box-shadow: 0 0 #0000; max-width: 100%;"
+  ></iframe>
+</div>

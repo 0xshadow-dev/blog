@@ -1,17 +1,7 @@
 ---
-# pubDatetime: 2025-08-25T08:18:19.693Z
-# title: AstroPaper 5.0
-# slug: astro-paper-v5
-# featured: true
-# ogImage: ../../../assets/images/AstroPaper-v5.png
-# tags: ["test"]
-# description: "AstroPaper v5: keep the clean look, updates under the hood."
-# series: "Building Markdown Parser Using Rust"
-# seriesOrder: 1
-#
 title: "GPUI Hello World Tutorial - From Core Concepts to Hello World"
 description: "Beginner tutorial to gpui ui framework from the creators of zed editor and create a hello world app"
-pubDatetime: 2025-08-22T19:30:00Z
+pubDatetime: 2025-08-21T19:30:00Z
 tags: ["rust", "gpui", "hello-world"]
 series: "Learning GPUI"
 seriesOrder: 1

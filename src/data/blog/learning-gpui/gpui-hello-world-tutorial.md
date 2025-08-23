@@ -6,6 +6,7 @@ tags: ["rust", "gpui", "hello-world"]
 series: "Learning GPUI"
 seriesOrder: 1
 featured: true
+ogImage: ../../../assets/images/gpui/gpui-hello-world-tutorial.png
 ---
 
 In this post, we are going to learn about GPUI - an open source UI framework developed by the Zed Industries team to build interfaces by utilizing our computer's GPU. We are going to learn the basics of GPUI by building a hello world app.

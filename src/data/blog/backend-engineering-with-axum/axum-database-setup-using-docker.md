@@ -1,7 +1,7 @@
 ---
 title: "Axum Backend Series: Docker, Database and Connection Pooling"
 description: "Setup Database using Docker and understand connection pooling"
-pubDatetime: 2025-09-010T19:30:00Z
+pubDatetime: 2025-09-10T19:30:00Z
 tags: ["rust", "axum", "backend", "docker", "database"]
 series: "Backend Engineering in Axum"
 seriesOrder: 2

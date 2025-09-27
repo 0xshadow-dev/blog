@@ -198,7 +198,7 @@ For now, lets not worry about refresh tokens, I'll explain that when we will add
 
 Ok, enough theory, let's start working on our authentication feature. In this post, we are going to build a functional authentication system that'll only use access token and have endpoints for registering user and login. Then we will create another protected endpoint to check if our authentication system is correctly allowing or restricting user depending on their login status.
 
-We're building a complete JWT authentication system with registration, login, and protected routes. By the end of this post, you'll have working endpoints you can test in Postman, and understand how companies like GitHub and Stripe handle authentication.
+We're building a complete JWT authentication system with registration, login, and protected routes. By the end of this post, you'll have working endpoints you can test in Postman.
 
 ## What We're Building
 
@@ -731,6 +731,8 @@ You might wonder why we look up the user in the database when we already have th
 Two reasons:
 1. Token could be valid but user account was deleted
 2. We want current username, bio, etc.
+
+> By doing this, we are doing the same thing as session based auth, where we are doing db lookup per request. We could've skipped this and make it truely stateless jwt auth but for learning purposes, I thought I should keep the DB lookup. In future article, we might remove this.
 
 ```rust
 let user = app_state.user_repository

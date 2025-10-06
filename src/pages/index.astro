@@ -44,7 +44,8 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
       </a>
 
       <p>
-        Here, you'll find all of my writings related to what I'm learning or working. It can be related to web, app, game, ai etc.
+        Here, you'll find all of my writings related to what I'm learning or
+        working. It can be related to web, app, game, ai etc.
       </p>
       <p class="mt-2">
         Read the blog posts or check
@@ -64,6 +65,13 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
           </div>
         )
       }
+    </section>
+
+    <section id="newsletter-hero">
+      <h2 class="text-2xl font-semibold tracking-wide">
+        Subscribe to Newsletter
+      </h2>
+      <Newsletter />
     </section>
 
     <Hr />
@@ -108,7 +116,9 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
     <Hr />
 
     <section id="newsletter" class="pt-12 pb-6">
-      <h2 class="text-2xl font-semibold tracking-wide mb-6">Subscribe to Newsletter</h2>
+      <h2 class="mb-6 text-2xl font-semibold tracking-wide">
+        Subscribe to Newsletter
+      </h2>
       <div class="flex justify-center">
         <Newsletter />
       </div>

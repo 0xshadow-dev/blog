@@ -9,7 +9,7 @@ featured: true
 ogImage: ../../../assets/images/axum-backend-engineering/email-verification/axum-email-verification-cover-image.png
 ---
 
-In this post, we are going to build a email verification system.
+In this post, we are going to build an email verification system.
 
 Look, we've got a problem with our authentication system. When someone registers with `sam@gmail.com`, there's literally zero proof they actually own that email. They could be:
 - Using someone else's email to impersonate them

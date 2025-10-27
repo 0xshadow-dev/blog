@@ -6,6 +6,7 @@ import IconSearch from "@/assets/icons/IconSearch.svg";
 import IconArchive from "@/assets/icons/IconArchive.svg";
 import IconSunHigh from "@/assets/icons/IconSunHigh.svg";
 import IconMenuDeep from "@/assets/icons/IconMenuDeep.svg";
+import IconYouTube from "@/assets/icons/IconYouTube.svg";
 import LinkButton from "./LinkButton.astro";
 import { SITE } from "@/config";
 
@@ -89,6 +90,16 @@ const isActive = (path: string) => {
           <li class="col-span-2">
             <a href="/about" class:list={{ "active-nav": isActive("/about") }}>
               About
+            </a>
+          </li>
+          <li class="col-span-2">
+            <a
+              href="https://www.youtube.com/@0xshadow-dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-center gap-2"
+            >
+              YouTube
             </a>
           </li>
           {

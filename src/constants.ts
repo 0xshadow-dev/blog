@@ -7,6 +7,7 @@ import IconWhatsapp from "@/assets/icons/IconWhatsapp.svg";
 import IconFacebook from "@/assets/icons/IconFacebook.svg";
 import IconTelegram from "@/assets/icons/IconTelegram.svg";
 import IconPinterest from "@/assets/icons/IconPinterest.svg";
+import IconYouTube from "@/assets/icons/IconYouTube.svg";
 import { SITE } from "@/config";
 
 interface Social {
@@ -28,6 +29,12 @@ export const SOCIALS: Social[] = [
     href: "https://x.com/0xshadow_dev",
     linkTitle: `${SITE.title} on X`,
     icon: IconBrandX,
+  },
+  {
+    name: "YouTube",
+    href: "https://www.youtube.com/@0xshadow-dev",
+    linkTitle: `${SITE.title} on YouTube`,
+    icon: IconYouTube,
   },
   // {
   //   name: "LinkedIn",

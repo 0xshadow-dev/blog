@@ -9,7 +9,17 @@ featured: true
 ogImage: ../../../assets/images/axum-backend-engineering/axum-backend-engineering-cover-image-1.png
 ---
 
-
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 700px; margin: 0 auto;">
+  <iframe
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+    src="https://www.youtube.com/embed/Imb6vJkD0Vc?si=6YU2rfYJ-RcJPDOj"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen>
+  </iframe>
+</div>
 
 In this series, we are going to learn backend engineering using Axum, a web framework from Tokio team. We will build a single project that'll be a Medium API clone following the RealWorld API Spec --> https://github.com/gothinkster/realworld
 
